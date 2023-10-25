@@ -1,0 +1,95 @@
+
+
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+
+
+// app样式
+.app_wrapper {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .app_Main {
+    height: calc(100vh - 84px);
+  }
+  .tags-view{
+    height: 34px;
+    line-height: 34px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);;
+  }
+  // 侧边栏样式
+  .sideBar-wrapper {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    background-color: #304156;
+    transition: width .28s;
+    .scrollbar-wrapper {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    .el-submenu__title {
+      background-color: rgb(48, 65, 86) !important;
+      color: rgb(191, 203, 217) !important;
+    }
+
+    //    width: 210px  !important;
+  }
+  // reset element-ui css
+//   .horizontal-collapse-transition {
+//     transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+//   }
+// 顶部导航样式
+  .topBar{
+    box-shadow: 0 1px 4px rgba(0,21,41,0.08);
+
+  }
+
+  .svg-icon {
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+  .el-menu {
+    border: none;
+    height: 100%;
+    width: 100% !important;
+  }
+}
+html,body{
+  height: 100%;
+}
+.toggle_open {
+    .sideBar-wrapper {
+      width: 200px;
+    }
+    .main-wrapper {
+      margin-left: 200px;
+      transition: margin-left 0.28s;
+    }
+  }
+  .toggle_close {
+    .sideBar-wrapper {
+      width: 54px;
+    }
+    .main-wrapper {
+      margin-left: 54px;
+      transition: margin-left .28s;
+    }
+  }

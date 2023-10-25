@@ -1,0 +1,5 @@
+export { default as appMain } from './appMain/index.vue'
+export { default as topBar } from './topBar/index.vue'
+// export { default as Settings } from './Settings'
+export { default as sideBar } from './sideBar/index.vue'
+export { default as tagsView } from './TagsView/index.vue'
