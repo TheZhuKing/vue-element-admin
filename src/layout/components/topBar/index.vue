@@ -15,12 +15,12 @@
           <!-- 搜索 -->
           <globalSearch class="util-item" />
           <!-- 全屏 -->
-          <Fullscreen class="util-item" />
+          <Fullscreen class="util-item hover-effect" />
           <!-- 全局大小变化 -->
           <el-tooltip  effect="dark" content="Global Size" placement="bottom">
-            <SizeSelect  class="util-item"/>
+            <SizeSelect  class="util-item hover-effect"/>
           </el-tooltip>
-          <Avatar class="util-item"/>
+          <Avatar class="util-item hover-effect"/>
       </div>
   </div>
 </template>
@@ -85,13 +85,16 @@ export default {
        line-height: 50px;
      
       .util-item{
-        cursor: pointer;
          font-size: 18px;
          height: 100%;
          padding: 0 8px;
          display: inline-block;
          vertical-align: text-bottom;
+         &.hover-effect{
+          cursor: pointer;
+         }
       }
+
   }
  
 }

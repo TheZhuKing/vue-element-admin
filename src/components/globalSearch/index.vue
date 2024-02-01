@@ -1,15 +1,19 @@
 <template>
-   <div class="globalSearch">
-    <svg-icon style="background:none" class-name="search-icon" icon-class="search" @click="toSearch" />
+   <div :class="{'show':show}" class="globalSearch">
+    <svg-icon  class-name="search-icon" icon-class="search" @click.stop="toSearch" />
     <el-select
-     class="inline-select"
+      ref="input_Ref"
+      class="inline-select"
       v-model="serachContent"
-       placeholder="Search" 
-       filterable 
-       remote
+      :remote-method="querySearch"
+      filterable
+      default-first-option
+      remote
+      placeholder="Search"
+      @change="change"
        >
         <el-option
-          v-for="item in matchList"
+          v-for="item in options"
           :key="item.value"
           :label="item.label"
           :value="item.value">
@@ -22,24 +26,31 @@
 export default {
     data(){
         return{
-            serachContent:''
+            serachContent:'',
+            show:false,
+            options:[]
         }
     },
     mounted(){
 
     },
+    watch:{
+      show(value) {
+      if (value) {
+        document.body.addEventListener('click', this.close)
+      } else {
+        document.body.removeEventListener('click', this.close)
+      }
+    }
+    },
     methods:{
-        querySearch(queryString, cb) {
-        var matchList = this.matchList;
-        var results = queryString ? matchList.filter(this.createFilter(queryString)) : matchList;
-        // 调用 callback 返回建议列表的数据
-        if(results.length>0){
-
-        }else{
-              results=[{value:'暂无数据'}]
-        }
-        cb(results);
-      },
+      querySearch(query) {
+      if (query !== '') {
+        this.options = this.fuse.search(query)
+      } else {
+        this.options = []
+      }
+    },
       createFilter(queryString) {
         return (restaurant) => {
           return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
@@ -47,12 +58,26 @@ export default {
       },
     //   去查询
       toSearch(){
-         let ele = document.querySelector('.inline-input .el-input__inner')
-         ele.style.width=155+'px'
-         this.$refs.input_Ref.focus()
-         
 
+        this.show=!this.show
+        console.log(this.show,'点击了--');
+        if(this.show){
+         this.$refs.input_Ref&&this.$refs.input_Ref.focus()
+        }
+      },
+      close(){
+
+        this.$refs.input_Ref&&this.$refs.input_Ref.blur()
+        this.options=[]
+        this.show=false
+      },
+      change(){
+          this.options=[]
+          this.$nextTick(()=>{
+            this.show=false
+          })
       }
+
     },
     computed:{
         matchList(){
@@ -66,14 +91,17 @@ export default {
 
 <style lang="scss"> 
 .globalSearch{
-    height: 100%;
-    display: flex;
-    align-items: center;
     .search-icon{
-
+      vertical-align: middle;
+      cursor: pointer;
     }
-   
+  
     .inline-select{
+      overflow: hidden;
+      transition: width .2s;
+      width: 0;
+      display: inline-block;
+      vertical-align: middle;
       .el-input__inner{
         border-radius: 0;
         border: 0;
@@ -84,6 +112,14 @@ export default {
         border-bottom: 1px solid #d9d9d9;
         vertical-align: middle;
       }
+    }
+    &.show{
+      .inline-select{
+        width: 155px;
+      
+      }
+     
+      
     }
 
 }
