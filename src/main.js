@@ -14,6 +14,8 @@ import router from './router'
 // 使用vue路由
 Vue.use(VueRouter)
 Vue.use(ElementUI);
+import api from '@/api'
+Vue.prototype.$api=api
 Vue.config.productionTip = false
   
 new Vue({

@@ -33,7 +33,8 @@ export default {
   },
   computed:{
      isCollapse(){
-       return  this.$store.state.app.side_collape
+        console.log(this.$store.state.app.sideStatus,'计算属性--');
+       return  this.$store.state.app.sideStatus
      }
   }
 

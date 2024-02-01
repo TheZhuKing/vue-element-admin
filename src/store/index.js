@@ -18,7 +18,7 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   modules[moduleName] = value.default
   return modules
 }, {})
-
+console.log(modules,'vuex');
 // 接下里需要在mian中注册一下
 
 // 对外暴露Store中的一个实例\\

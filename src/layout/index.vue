@@ -2,13 +2,10 @@
   <div :class="appObj()" class="app_wrapper">
     <sideBar class="sideBar-wrapper"/>
     <div class="main-wrapper">
-    
       <topBar class="topBar"/>
       <tags-view  class="tags-view"></tags-view>
       <appMain class="app_Main" />
-     
     </div>
-  
   </div>
 </template>
 
@@ -24,10 +21,8 @@ export default {
   },
   computed:{
     isCollapse(){
-       return  this.$store.state.app.side_collape
+       return  this.$store.state.app.sideStatus
      }
-  
-
   },
   methods:{
     appObj(){

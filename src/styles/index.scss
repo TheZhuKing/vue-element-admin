@@ -1,6 +1,3 @@
-
-
-
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -8,13 +5,9 @@ body {
   text-rendering: optimizeLegibility;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
-
-
-
 // app样式
 .app_wrapper {
   position: relative;
-
   &::after {
     content: '';
     display: block;
@@ -41,12 +34,10 @@ body {
       height: 100%;
       overflow-x: hidden;
     }
-
     .el-submenu__title {
       background-color: rgb(48, 65, 86) !important;
       color: rgb(191, 203, 217) !important;
     }
-
     //    width: 210px  !important;
   }
   // reset element-ui css
@@ -56,15 +47,6 @@ body {
 // 顶部导航样式
   .topBar{
     box-shadow: 0 1px 4px rgba(0,21,41,0.08);
-
-  }
-
-  .svg-icon {
-    padding: 10px;
-    cursor: pointer;
-    &:hover {
-      background-color: #ccc;
-    }
   }
   .el-menu {
     border: none;
@@ -84,12 +66,12 @@ html,body{
       transition: margin-left 0.28s;
     }
   }
-  .toggle_close {
-    .sideBar-wrapper {
-      width: 54px;
-    }
-    .main-wrapper {
-      margin-left: 54px;
-      transition: margin-left .28s;
-    }
+.toggle_close {
+  .sideBar-wrapper {
+    width: 54px;
   }
+  .main-wrapper {
+    margin-left: 54px;
+    transition: margin-left .28s;
+  }
+}

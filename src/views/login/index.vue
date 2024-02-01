@@ -12,12 +12,12 @@
         <span class="svg-wrap">
           <svg-icon icon-class="password" />
         </span>
-        <el-input v-model="form.passWord"></el-input>
+        <el-input v-model="form.passWord" :type="passwordType === 'password' ? 'password' : 'text'"></el-input>
         <span class="show-pwd" @click="showPwd" style="color: #889aa4">
           <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
-      <el-button class="login_btn" type="primary" size="default" @click="">login</el-button>
+      <el-button class="login_btn" type="primary" size="default" @click="Login">login</el-button>
 
       <div class="footer">
         <div class="footer_left">
@@ -51,6 +51,11 @@ export default {
     }
   },
   methods: {
+   async Login(){
+      let res=  await  this.$store.dispatch('app/login',this)
+      this.$router.push({ path: this.redirect || '/' })
+      
+    },
     showPwd() {
       console.log(111)
       if (this.passwordType) {
@@ -71,6 +76,7 @@ export default {
 </script>
 
 <style lang="scss">
+$cursor: #fff;
 .login_wrap {
   background: rgb(45, 58, 75);
   height: 100%;
@@ -90,10 +96,18 @@ export default {
   .el-input {
     width: 85%;
     input {
-      background: transparent;
+      background: transparent ;
       border: none;
       height: 52px;
-      color: #fff;
+      color: $cursor;
+      border-radius: 0;
+      &:-webkit-autofill{
+
+        -webkit-text-fill-color: $cursor;
+        caret-color: $cursor;
+  
+        box-shadow: 0 0 0px 50px rgb(40, 52, 67) inset !important;
+      }
     }
   }
   .el-form-item {

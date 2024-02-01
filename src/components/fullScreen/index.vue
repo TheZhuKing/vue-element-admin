@@ -1,5 +1,7 @@
 <template>
-    <svg-icon :icon-class="isFullscreen?'exit-fullscreen':'fullscreen'" @click="click" />
+    <div >
+        <svg-icon :icon-class="isFullscreen?'exit-fullscreen':'fullscreen'" @click="click" />
+    </div>
 </template>
 
 <script>
@@ -19,5 +21,6 @@ export default {
 </script>
 
 <style>
+
 
 </style>

@@ -1,6 +1,6 @@
 <template>
    <div class="globalSearch">
-    <svg-icon class-name="search-icon" icon-class="search" @click="toSearch" />
+    <svg-icon style="background:none" class-name="search-icon" icon-class="search" @click="toSearch" />
     <el-select
      class="inline-select"
       v-model="serachContent"
@@ -23,13 +23,9 @@ export default {
     data(){
         return{
             serachContent:''
-
         }
-
-       
     },
     mounted(){
-    
 
     },
     methods:{
@@ -70,26 +66,24 @@ export default {
 
 <style lang="scss"> 
 .globalSearch{
+    height: 100%;
     display: flex;
     align-items: center;
     .search-icon{
+
     }
-    /*input样式*/
-    .inline-input{
-        line-height: 50px;
-        height: 50px;
-       .el-input__inner{
-            width: 0;
-           border: none;
-           border-bottom:1px solid #ccc;    
-           border-radius: 0;
-           vertical-align: top;
-           padding: 0;
-           transition: all .3s;
-
-         
-
-       }
+   
+    .inline-select{
+      .el-input__inner{
+        border-radius: 0;
+        border: 0;
+        padding-left: 0;
+        padding-right: 0;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border-bottom: 1px solid #d9d9d9;
+        vertical-align: middle;
+      }
     }
 
 }
