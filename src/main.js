@@ -11,6 +11,7 @@ import "@/icons" //svg-icon
 import VueRouter from 'vue-router'
 
 import router from './router'
+import "./permission.js"
 // 使用vue路由
 Vue.use(VueRouter)
 Vue.use(ElementUI);

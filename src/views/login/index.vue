@@ -52,7 +52,7 @@ export default {
   },
   methods: {
    async Login(){
-      let res=  await  this.$store.dispatch('app/login',this)
+      let res=  await  this.$store.dispatch('user/login',this)
       this.$router.push({ path: this.redirect || '/' })
       
     },

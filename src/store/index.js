@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import getters from './getter'
 // 需要使用插件一次
 Vue.use(Vuex)
 
@@ -23,7 +23,6 @@ console.log(modules,'vuex');
 
 // 对外暴露Store中的一个实例\\
 export default new Vuex.Store({
-
-   
-    modules  
+    modules,  
+    getters
 })

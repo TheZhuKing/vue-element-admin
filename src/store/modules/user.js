@@ -2,7 +2,8 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 // import router, { resetRouter } from '@/router'
 // state:  仓库存储数据的地方
 const state = {
-    token:getToken()
+    token:getToken(),
+    roles:[]
 
 }
 // mutations:  修改仓库数据的唯一的位置
@@ -14,11 +15,11 @@ const mutations = {
 }
 // actions  处理acions，能够用来书写自己的业务逻辑的数据，也能够处理异步
 const actions = {
-    login({},THAT){
+    login({state,commit},THAT){
           let {passWord,userName}=THAT.form
           if(userName =='admin'&&passWord == '123'){
-            new Promise((resolve, reject) => {
-                THAT.$api.user.Login().then(res=>{
+           return new Promise((resolve, reject) => {
+                THAT.$api.user.Login({ username: userName.trim(), password: passWord }).then(res=>{
                     let {data}=res
                     commit('SET_TOKEN',data.token)
                     setToken(data.token)
@@ -32,7 +33,16 @@ const actions = {
             })
           }
      
+    },
+    getInfo({state,commit}){
+        return new Promise((resolve, reject) => {
+            THAT.$api.user.getInfo().then(res=>{
+               
+            })
+        })
+
     }
+
 
 
 }
