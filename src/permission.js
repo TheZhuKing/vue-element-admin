@@ -19,21 +19,21 @@ router.beforeEach(async(to,from,next)=>{
             next({path:'/'})
             NProgress.done()
         }else{
-
             if(hasRole){
                 next()
             }else{
                 try {
-                    Message.warning('没角色')
                     // 有token但没有角色 重新获取角色信息建立路由
                     const { roles } = await store.dispatch('user/getInfo')
                     // generate accessible routes map based on roles
                     // const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
                     // router.addRoute(accessRoutes)
                     next({...to,replace:true})
-                    
                 } catch (error) {
-                    
+                    console.log(error,'permission错误信息');
+                    Message.error(error || 'Has Error')
+                    next(`/login?redirect=${to.path}`)
+                    NProgress.done()
                 }
            
             }
@@ -50,3 +50,8 @@ router.beforeEach(async(to,from,next)=>{
 
     }
 })
+router.afterEach(() => {
+    // finish progress bar
+    NProgress.done()
+  })
+  

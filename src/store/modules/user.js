@@ -1,4 +1,5 @@
 import { getToken, setToken, removeToken } from '@/utils/auth'
+import {getInfo,logout} from '@/api//user'
 // import router, { resetRouter } from '@/router'
 // state:  仓库存储数据的地方
 const state = {
@@ -10,14 +11,17 @@ const state = {
 const mutations = {
     SET_TOKEN: (state, token) => {
         state.token = token
-      },
+    },
+    SET_ROLES: (state, roles)=>{
+        state.roles = roles
+    }
+    
  
 }
 // actions  处理acions，能够用来书写自己的业务逻辑的数据，也能够处理异步
 const actions = {
     login({state,commit},THAT){
           let {passWord,userName}=THAT.form
-          if(userName =='admin'&&passWord == '123'){
            return new Promise((resolve, reject) => {
                 THAT.$api.user.Login({ username: userName.trim(), password: passWord }).then(res=>{
                     let {data}=res
@@ -27,17 +31,30 @@ const actions = {
                 })
             })
 
-          }else{
-            return new Promise((resolve,reject)=>{
-                reject('用户名或密码错误')
-            })
-          }
+       
      
     },
     getInfo({state,commit}){
         return new Promise((resolve, reject) => {
-            THAT.$api.user.getInfo().then(res=>{
+            getInfo({token:state.token}).then(res=>{
+                let {data}=res
+                const {roles} = data
+                commit('SET_ROLES',roles)
+                resolve(data)
                
+            })
+        })
+
+    },
+    logout({state,commit}){
+        return new Promise((resolve, reject) => {
+            logout().then(res=>{
+                commit('SET_TOKEN','')
+                commit('SET_ROLES',[])
+                removeToken()
+                resolve()
+        
+                 
             })
         })
 

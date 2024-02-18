@@ -5,8 +5,8 @@
         <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item v-for="item of sizeOptions" :key="item.value" :disabled="size===item.value" :command="item.value">
-            {{item.label }}
+          <el-dropdown-item  @click.native="LogOut">
+            {{ '登出' }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -16,13 +16,17 @@
 export default {
     data() {
         return {
-            sizeOptions:[{label:'选项一',value:'1'}],
             size:''
         }
     },
     methods:{
         handleSetSize(){
             
+        },
+       async LogOut(){
+           await this.$store.dispatch('user/logout')
+            this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+
         }
     }
 

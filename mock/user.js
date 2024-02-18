@@ -29,7 +29,7 @@ const tokens = {
         url:"/vue-element-admin/user/login",
         type:'post',
         response(config){
-            console.log(config,'配置');
+            // console.log(config,'配置');
              const {username}=config.body
              let token=tokens[username]
              return{
@@ -49,6 +49,16 @@ const tokens = {
             return{
                 code:20000,
                 data
+            }
+        }
+    },
+    //logout
+    {
+        url:"/vue-element-admin/user/logout",
+        type:'post',
+        response(){
+            return{
+              code:20000
             }
         }
     }

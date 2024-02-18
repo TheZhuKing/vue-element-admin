@@ -5,3 +5,6 @@ export function Login(params){
 export function getInfo(params){
    return service.post('/vue-element-admin/user/info',params)
 }
+export function logout(params){
+   return service.post('/vue-element-admin/user/logout',params)
+}

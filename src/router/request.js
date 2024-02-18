@@ -11,7 +11,7 @@ service.interceptors.request.use(
     config=>{
         let token=getToken()
         if(token){
-            config.header['Authorization']=token
+            config.headers['Authorization']=token
         }
         return config
     },
