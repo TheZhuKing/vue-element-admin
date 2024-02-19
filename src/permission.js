@@ -26,8 +26,8 @@ router.beforeEach(async(to,from,next)=>{
                     // 有token但没有角色 重新获取角色信息建立路由
                     const { roles } = await store.dispatch('user/getInfo')
                     // generate accessible routes map based on roles
-                    // const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
-                    // router.addRoute(accessRoutes)
+                    const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
+                    router.addRoutes(accessRoutes)
                     next({...to,replace:true})
                 } catch (error) {
                     console.log(error,'permission错误信息');

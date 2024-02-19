@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 // 引入一下用到的组件 
 import Layout from '../layout/index'
  
-const constRoutes=[
+export const constRoutes=[
     // 登录页
     {
         // path是路径
@@ -31,13 +31,20 @@ const constRoutes=[
         ]
     },       
 ]
-const asyncRoutes =[
+export const asyncRoutes =[
     {
         // path是路径
         path: "/permission",
         //跳转的组件
         component: Layout,
         redirect: '/permission/page',
+        alwaysShow: true, // will always show the root menu
+        name: 'Permission',
+        meta: {
+        title: 'Permission',
+        icon: 'lock',
+        roles: ['admin', 'editor'] // you can set roles in root nav
+        },
         children: [
         {
             path: 'page',

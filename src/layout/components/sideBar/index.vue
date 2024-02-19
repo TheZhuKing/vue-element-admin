@@ -8,24 +8,20 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
-      <el-submenu  v-for="item in 10" :key='item' :index="item+''" >
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-    
-      </el-submenu>
+      <sidebar-item v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
      
     </el-menu>
   </el-scrollbar>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import SidebarItem from './SidebarItem'
 export default {
+  components:{
+    SidebarItem
+  },
+  
   data(){
     return{
       
@@ -35,7 +31,13 @@ export default {
      isCollapse(){
         console.log(this.$store.state.app.sideStatus,'计算属性--');
        return  this.$store.state.app.sideStatus
-     }
+     },
+     ...mapGetters(
+      [
+        'permission_routes',
+        'sidebar'
+      ]
+     )
   }
 
 }
