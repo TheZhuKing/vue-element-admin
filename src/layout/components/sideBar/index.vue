@@ -5,7 +5,7 @@
       :collapse-transition="false"
       default-active="2"
       class="el-menu-vertical-demo"
-      background-color="#545c64"
+      background-color="transparent"
       text-color="#fff"
       active-text-color="#ffd04b">
       <sidebar-item v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
@@ -21,7 +21,6 @@ export default {
   components:{
     SidebarItem
   },
-  
   data(){
     return{
       

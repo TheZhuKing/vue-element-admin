@@ -59,12 +59,16 @@ html,body{
 }
 .toggle_open {
     .sideBar-wrapper {
-      width: 200px;
+      width: 210px;
+      .svg-icon{
+        margin-right:16px
+      }
     }
     .main-wrapper {
-      margin-left: 200px;
+      margin-left: 210px;
       transition: margin-left 0.28s;
     }
+
   }
 .toggle_close {
   .sideBar-wrapper {
