@@ -16,6 +16,9 @@ import "./permission.js"
 Vue.use(VueRouter)
 Vue.use(ElementUI);
 import api from '@/api'
+// 全局组件
+import Components from '@/components'
+Vue.use(Components)
 Vue.prototype.$api=api
 Vue.config.productionTip = false
   

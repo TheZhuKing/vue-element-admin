@@ -1,7 +1,7 @@
 <template>
     <el-row :gutter="40" class="panel-group">
         <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col" v-for="(item,index) in cardList" :key="index">
-          <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+          <div class="card-panel" @click="handleSetLineChartData(item.emitText)">
             <div class="card-panel-icon-wrapper" :class="[item.iconClass]">
               <svg-icon :icon-class="item.icon" class-name="card-panel-icon" />
             </div>
@@ -26,25 +26,29 @@ export default {
                     text:'New Visits',
                     icon:'peoples',
                     num: 102400,
-                    iconClass:'icon-people'
+                    iconClass:'icon-people',
+                    emitText:'newVisitis'
                 },
                 {
                     text:'Messages',
                     icon:'message',
                     num: 81212,
-                    iconClass:'icon-message'
+                    iconClass:'icon-message',
+                    emitText:'messages'
                 },
                 {
                     text:'Purchases',
                     icon:'money',
                     num: 9280,
-                    iconClass:'icon-money'
+                    iconClass:'icon-money',
+                    emitText:'purchases'
                 },
                 {
                     text:'Shoppings',
                     icon:'shopping',
                     num: 13600,
-                    iconClass:'icon-shopping'
+                    iconClass:'icon-shopping',
+                    emitText:'shoppings'
                 }
 
             ]
@@ -54,8 +58,8 @@ export default {
         countTo
     },
     methods: {
-        handleSetLineChartData(){
-
+        handleSetLineChartData(type) {
+            this.$emit('handleSetLineChartData', type)
         }
     },
 }
@@ -72,6 +76,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         padding: 14px 26px 14px 14px;
+        margin-bottom: 32px;
         .card-panel-icon-wrapper{
             transition: all 0.38s ease-out;
         }
