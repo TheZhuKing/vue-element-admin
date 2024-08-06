@@ -1,4 +1,5 @@
 module.exports = {
+  // lintOnSave: false,
     root: true,
     env: {
       node: true
@@ -8,7 +9,7 @@ module.exports = {
       'eslint:recommended'
     ],
     parserOptions: {
-      parser: '@babel/eslint-parser'
+      // parser: '@babel/eslint-parser'
     },
     rules: {
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

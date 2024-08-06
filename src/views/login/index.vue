@@ -31,7 +31,7 @@
           </div>
         </div>
         <div>
-          <el-button type="primary" size="default" @click="">Or connet width</el-button>
+          <el-button type="primary" size="default">Or connet width</el-button>
         </div>
       </div>
     </el-form>
@@ -52,7 +52,7 @@ export default {
   },
   methods: {
    async Login(){
-      let res=  await  this.$store.dispatch('user/login',this)
+      // let res=  await  this.$store.dispatch('user/login',this)
       this.$router.push({ path: this.redirect || '/' })
       
     },

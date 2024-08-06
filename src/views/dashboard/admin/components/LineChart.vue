@@ -6,9 +6,7 @@
     />
         
 </template>
-
 <script>
-
 export default {
     props:['chartData'],
     data() {
@@ -83,8 +81,8 @@ export default {
         }
     },
     methods:{
-        dataTrans(o,d){
-            let arr=Object.entries(d)
+        dataTrans(o,data){
+            let arr=Object.entries(data)
             for(let index in arr){
                 o.series[index].data=arr[index][1]
             }

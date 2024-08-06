@@ -27,7 +27,6 @@
         default: true
       },
       chartData: {
-        type: Object,
         required: true
       },
       dataTrans:{
@@ -51,7 +50,7 @@
     watch: {
       chartData: {
         deep: true,
-        handler(val) {
+        handler() {
              this.initChart()
         }
       }

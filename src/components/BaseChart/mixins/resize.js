@@ -9,7 +9,6 @@ export default {
   },
   mounted() {
     this.$_resizeHandler = debounce(() => {
-      console.log('触发了','----');
       if (this.chart) {
         this.chart.resize()
       }
@@ -41,14 +40,12 @@ export default {
       window.removeEventListener('resize', this.$_resizeHandler)
     },
     $_sidebarResizeHandler(e) {
-      console.log(e,'触发了----');
       if (e.propertyName === 'width') {
         this.$_resizeHandler()
       }
     },
     $_initSidebarResizeEvent() {
       this.$_sidebarElm = document.getElementsByClassName('sideBar-wrapper')[0]
-      console.log(this.$_sidebarElm,'元素获取-----');
       this.$_sidebarElm && this.$_sidebarElm.addEventListener('transitionend', this.$_sidebarResizeHandler)
     },
     $_destroySidebarResizeEvent() {
